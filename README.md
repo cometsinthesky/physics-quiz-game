@@ -1,4 +1,4 @@
-## Physics Quiz Game — Batalha de Equipes ⚛️⚡🚀🌡️🔊🔦🔌 <img src="https://raw.githubusercontent.com/cometsinthesky/physics-quiz-game/main/images/physics-quiz-og-image.png" alt="Physics Quiz OG Image" width="200" height="200" />
+## Physics Quiz Game - Batalha de Equipes ⚛️⚡🚀🌡️🔊🔦🔌 <img src="https://raw.githubusercontent.com/cometsinthesky/physics-quiz-game/main/images/physics-quiz-og-image.png" alt="Physics Quiz OG Image" width="200" height="200" />
 
 ## [Jogue Physics Quiz Agora!](https://cometsinthesky.github.io/physics-quiz-game/)
 
