@@ -58,8 +58,8 @@ const LANG = {
     noOneBuzzed: 'Ninguem respondeu! Nova pergunta...',
   },
   en: {
-    gameTitle: 'Physics Quiz ⚛️',
-    subtitle: 'Classroom Team Battle 🔥',
+    gameTitle: 'Physics Quiz',
+    subtitle: 'Classroom Team Battle',
     teamNames: 'Team Names',
     teamBlue: 'Blue Team',
     teamOrange: 'Orange Team',
