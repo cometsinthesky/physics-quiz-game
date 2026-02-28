@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics Quiz — Batalha de Equipes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Confetti Canvas (behind everything) -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Persistent Scoreboard Bar -->
+  <div id="scoreboard" class="scoreboard hidden">
+    <div class="score-team score-blue">
+      <span class="team-name-display" id="sb-blue-name">Time Azul</span>
+      <span class="team-score" id="sb-blue-score">0</span>
+      <span class="streak-badge" id="sb-blue-streak"></span>
+    </div>
+    <div class="round-indicator" id="round-indicator">Rodada 1 de 10</div>
+    <div class="score-team score-orange">
+      <span class="streak-badge" id="sb-orange-streak"></span>
+      <span class="team-score" id="sb-orange-score">0</span>
+      <span class="team-name-display" id="sb-orange-name">Time Laranja</span>
+    </div>
+  </div>
+
+  <!-- SCREEN 1: Setup -->
+  <div id="screen-setup" class="screen active">
+    <div class="setup-container">
+      <h1 class="game-title">
+        <svg class="title-icon" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+        </svg>
+        <span data-lang="gameTitle">Quiz de Fisica</span>
+        <svg class="title-icon" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+      </h1>
+      <p class="subtitle" data-lang="subtitle">Batalha de Equipes na Sala de Aula</p>
+
+      <!-- Language Toggle -->
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-langval="pt">Portugues</button>
+        <button class="lang-btn" data-langval="en">English</button>
+      </div>
+
+      <!-- Team Names -->
+      <div class="setup-section">
+        <h2 data-lang="teamNames">Nomes das Equipes</h2>
+        <div class="team-inputs">
+          <div class="team-input blue-border">
+            <label for="team-blue-name" data-lang="teamBlue">Time Azul</label>
+            <input type="text" id="team-blue-name" value="Time Azul" maxlength="20">
+          </div>
+          <div class="team-input orange-border">
+            <label for="team-orange-name" data-lang="teamOrange">Time Laranja</label>
+            <input type="text" id="team-orange-name" value="Time Laranja" maxlength="20">
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Settings -->
+      <div class="setup-section">
+        <h2 data-lang="gameSettings">Configuracoes do Jogo</h2>
+        <div class="settings-row">
+          <div class="setting-group">
+            <label data-lang="rounds">Rodadas</label>
+            <div class="btn-group" id="rounds-group">
+              <button class="option-btn" data-value="5">5</button>
+              <button class="option-btn active" data-value="10">10</button>
+              <button class="option-btn" data-value="15">15</button>
+              <button class="option-btn" data-value="20">20</button>
+            </div>
+          </div>
+          <div class="setting-group">
+            <label data-lang="timerLabel">Tempo por Pergunta</label>
+            <div class="btn-group" id="timer-group">
+              <button class="option-btn" data-value="15">15s</button>
+              <button class="option-btn active" data-value="30">30s</button>
+              <button class="option-btn" data-value="45">45s</button>
+            </div>
+          </div>
+          <div class="setting-group">
+            <label data-lang="difficulty">Dificuldade</label>
+            <div class="btn-group" id="difficulty-group">
+              <button class="option-btn active" data-value="all" data-lang="diffAll">Todas</button>
+              <button class="option-btn" data-value="easy" data-lang="diffEasy">Facil</button>
+              <button class="option-btn" data-value="medium" data-lang="diffMedium">Media</button>
+              <button class="option-btn" data-value="hard" data-lang="diffHard">Dificil</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="setup-section">
+        <h2 data-lang="categories">Categorias</h2>
+        <div class="category-grid">
+          <label class="category-check">
+            <input type="checkbox" value="cinematica" checked>
+            <span class="cat-icon">🚀</span>
+            <span data-lang="catCinematica">Cinematica e Mecanica</span>
+          </label>
+          <label class="category-check">
+            <input type="checkbox" value="energia" checked>
+            <span class="cat-icon">⚡</span>
+            <span data-lang="catEnergia">Energia e Trabalho</span>
+          </label>
+          <label class="category-check">
+            <input type="checkbox" value="termodinamica" checked>
+            <span class="cat-icon">🌡️</span>
+            <span data-lang="catTermodinamica">Termodinamica</span>
+          </label>
+          <label class="category-check">
+            <input type="checkbox" value="ondas" checked>
+            <span class="cat-icon">🔊</span>
+            <span data-lang="catOndas">Ondas e Som</span>
+          </label>
+          <label class="category-check">
+            <input type="checkbox" value="optica" checked>
+            <span class="cat-icon">🔦</span>
+            <span data-lang="catOptica">Optica</span>
+          </label>
+          <label class="category-check">
+            <input type="checkbox" value="eletricidade" checked>
+            <span class="cat-icon">🔌</span>
+            <span data-lang="catEletricidade">Eletricidade e Magnetismo</span>
+          </label>
+          <label class="category-check">
+            <input type="checkbox" value="moderna" checked>
+            <span class="cat-icon">⚛️</span>
+            <span data-lang="catModerna">Fisica Moderna</span>
+          </label>
+        </div>
+      </div>
+
+      <button class="btn-start" id="btn-start" data-lang="startGame">Iniciar Jogo</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: Ready -->
+  <div id="screen-ready" class="screen">
+    <div class="ready-container">
+      <h2 class="ready-team" id="ready-team-name">Vez do Time Azul!</h2>
+      <div class="powerups-preview" id="ready-powerups"></div>
+      <div class="countdown-number" id="countdown-number">3</div>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: Question -->
+  <div id="screen-question" class="screen">
+    <div class="question-container">
+      <div class="question-header">
+        <span class="category-badge" id="q-category">
+          <span class="cat-icon" id="q-cat-icon">🚀</span>
+          <span id="q-cat-name">Cinematica</span>
+        </span>
+        <span class="difficulty-badge" id="q-difficulty">Media</span>
+      </div>
+
+      <div class="question-text" id="q-text">Pergunta aqui...</div>
+
+      <div class="options-grid" id="options-grid">
+        <button class="option-card" data-index="0">
+          <span class="option-key">A</span>
+          <span class="option-text">Opcao 1</span>
+        </button>
+        <button class="option-card" data-index="1">
+          <span class="option-key">B</span>
+          <span class="option-text">Opcao 2</span>
+        </button>
+        <button class="option-card" data-index="2">
+          <span class="option-key">C</span>
+          <span class="option-text">Opcao 3</span>
+        </button>
+        <button class="option-card" data-index="3">
+          <span class="option-key">D</span>
+          <span class="option-text">Opcao 4</span>
+        </button>
+      </div>
+
+      <!-- SVG Circular Timer -->
+      <div class="timer-container">
+        <svg class="timer-svg" viewBox="0 0 120 120">
+          <circle class="timer-bg" cx="60" cy="60" r="54" />
+          <circle class="timer-fill" id="timer-fill" cx="60" cy="60" r="54" />
+        </svg>
+        <span class="timer-text" id="timer-text">30</span>
+      </div>
+
+      <!-- Power-up Buttons -->
+      <div class="powerups-bar" id="powerups-bar">
+        <button class="powerup-btn" id="pu-double" data-powerup="double" title="Pontos Duplos">
+          <span class="pu-icon">2x</span>
+          <span class="pu-label" data-lang="puDouble">Pontos Duplos</span>
+        </button>
+        <button class="powerup-btn" id="pu-time" data-powerup="time" title="Tempo Extra">
+          <span class="pu-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            +
+          </span>
+          <span class="pu-label" data-lang="puTime">Tempo Extra</span>
+        </button>
+        <button class="powerup-btn" id="pu-eliminate" data-powerup="eliminate" title="Eliminar Duas">
+          <span class="pu-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </span>
+          <span class="pu-label" data-lang="puEliminate">Eliminar Duas</span>
+        </button>
+      </div>
+
+      <!-- Active power-up indicator -->
+      <div class="active-powerup-indicator hidden" id="active-powerup">
+        <span id="active-pu-text"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 4: Answer Reveal -->
+  <div id="screen-reveal" class="screen">
+    <div class="reveal-container">
+      <div class="reveal-result" id="reveal-result">
+        <span class="reveal-icon" id="reveal-icon">✓</span>
+        <span class="reveal-text" id="reveal-text">Correto!</span>
+      </div>
+
+      <div class="reveal-options" id="reveal-options"></div>
+
+      <div class="explanation-box" id="explanation-box">
+        <h3 data-lang="explanation">Explicacao</h3>
+        <p id="explanation-text">Explicacao da resposta...</p>
+      </div>
+
+      <div class="points-earned" id="points-earned">
+        <span class="points-value" id="points-value">+150</span>
+        <span class="points-breakdown" id="points-breakdown"></span>
+      </div>
+
+      <button class="btn-next" id="btn-next" data-lang="nextQuestion">Proxima Pergunta</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 5: Game Over -->
+  <div id="screen-gameover" class="screen">
+    <div class="gameover-container">
+      <div class="trophy-animation" id="trophy-animation">
+        <svg class="trophy-svg" viewBox="0 0 100 100" width="120" height="120">
+          <path d="M30 25h40v10c0 15-8 28-20 32-12-4-20-17-20-32V25z" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+          <path d="M30 30H15c0 12 6 20 15 22v-22z" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+          <path d="M70 30h15c0 12-6 20-15 22V30z" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+          <rect x="42" y="67" width="16" height="8" rx="2" fill="#f59e0b"/>
+          <rect x="35" y="75" width="30" height="6" rx="3" fill="#f59e0b"/>
+        </svg>
+      </div>
+
+      <h1 class="winner-text" id="winner-text">Time Azul Venceu!</h1>
+
+      <div class="final-scores">
+        <div class="final-score blue-glow" id="final-blue">
+          <span class="final-team-name" id="final-blue-name">Time Azul</span>
+          <span class="final-team-score" id="final-blue-score">0</span>
+        </div>
+        <div class="vs-divider">VS</div>
+        <div class="final-score orange-glow" id="final-orange">
+          <span class="final-team-name" id="final-orange-name">Time Laranja</span>
+          <span class="final-team-score" id="final-orange-score">0</span>
+        </div>
+      </div>
+
+      <button class="btn-start" id="btn-play-again" data-lang="playAgain">Jogar Novamente</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 6: Tiebreaker -->
+  <div id="screen-tiebreaker" class="screen">
+    <div class="tiebreaker-container">
+      <h1 class="tiebreaker-title" data-lang="tiebreaker">Empate! Pergunta de Desempate!</h1>
+      <p class="tiebreaker-instruction" data-lang="tiebreakerInstruction">Primeira equipe a responder corretamente vence!</p>
+
+      <div class="question-text" id="tb-text">Pergunta de desempate...</div>
+
+      <div class="options-grid" id="tb-options-grid">
+        <button class="option-card" data-index="0">
+          <span class="option-key">A</span>
+          <span class="option-text">Opcao 1</span>
+        </button>
+        <button class="option-card" data-index="1">
+          <span class="option-key">B</span>
+          <span class="option-text">Opcao 2</span>
+        </button>
+        <button class="option-card" data-index="2">
+          <span class="option-key">C</span>
+          <span class="option-text">Opcao 3</span>
+        </button>
+        <button class="option-card" data-index="3">
+          <span class="option-key">D</span>
+          <span class="option-text">Opcao 4</span>
+        </button>
+      </div>
+
+      <!-- SVG Circular Timer for tiebreaker -->
+      <div class="timer-container">
+        <svg class="timer-svg" viewBox="0 0 120 120">
+          <circle class="timer-bg" cx="60" cy="60" r="54" />
+          <circle class="timer-fill" id="tb-timer-fill" cx="60" cy="60" r="54" />
+        </svg>
+        <span class="timer-text" id="tb-timer-text">30</span>
+      </div>
+
+      <div class="buzz-buttons">
+        <button class="buzz-btn buzz-blue" id="buzz-blue">
+          <span id="buzz-blue-name">Time Azul</span>
+          <span class="buzz-key">[Q]</span>
+        </button>
+        <button class="buzz-btn buzz-orange" id="buzz-orange">
+          <span id="buzz-orange-name">Time Laranja</span>
+          <span class="buzz-key">[P]</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
