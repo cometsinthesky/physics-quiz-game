@@ -7,8 +7,8 @@
 // ─── Language System ───
 const LANG = {
   pt: {
-    gameTitle: 'Physics Quiz ⚛️',
-    subtitle: 'Batalha de Equipes na Sala de Aula 🔥',
+    gameTitle: 'Physics Quiz',
+    subtitle: 'Batalha de Equipes na Sala de Aula',
     teamNames: 'Nomes das Equipes',
     teamBlue: 'Time Azul',
     teamOrange: 'Time Laranja',
