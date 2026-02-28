@@ -1,6 +1,12 @@
-## Physics Quiz Game - Batalha de Equipes ⚛️⚡🚀🌡️🔊🔦🔌 <img src="https://github.com/cometsinthesky/physics-quiz-game/blob/main/images/game.jpg" alt="Physics Quiz OG Image" width="1000" height="745" />
+## Physics Quiz Game - Batalha de Equipes ⚛️⚡🚀🌡️🔊🔦🔌 
 
 ## [Jogue Physics Quiz Agora!](https://cometsinthesky.github.io/physics-quiz-game/)
+
+<p align="center">
+  <img src="https://github.com/cometsinthesky/physics-quiz-game/blob/main/images/game.jpg"
+       width="80%"
+       alt="Physics Quiz OG Image">
+</p>
 
 Um **quiz interativo** para sala de aula, no formato **batalha de equipes**, ideal para revisar e consolidar conteúdos de **Física** com dinâmica, colaboração e feedback imediato. Indicado para **Ensino Médio** (adaptável para Anos Finais do Ensino Fundamental, conforme seleção de dificuldade e categorias).
 
