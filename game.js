@@ -7,8 +7,8 @@
 // ─── Language System ───
 const LANG = {
   pt: {
-    gameTitle: 'Quiz de Fisica',
-    subtitle: 'Batalha de Equipes na Sala de Aula',
+    gameTitle: 'Physics Quiz ⚛️',
+    subtitle: 'Batalha de Equipes na Sala de Aula 🔥',
     teamNames: 'Nomes das Equipes',
     teamBlue: 'Time Azul',
     teamOrange: 'Time Laranja',
@@ -58,8 +58,8 @@ const LANG = {
     noOneBuzzed: 'Ninguem respondeu! Nova pergunta...',
   },
   en: {
-    gameTitle: 'Physics Quiz',
-    subtitle: 'Classroom Team Battle',
+    gameTitle: 'Physics Quiz ⚛️',
+    subtitle: 'Classroom Team Battle 🔥',
     teamNames: 'Team Names',
     teamBlue: 'Blue Team',
     teamOrange: 'Orange Team',
