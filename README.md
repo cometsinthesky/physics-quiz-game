@@ -102,10 +102,10 @@ Funciona bem com habilidades e objetivos ligados a:
 ---
 
 ## Estrutura do Projeto (Arquivos)
-- `index.html` — interface e telas do jogo (setup, rodada, questão, resultado, game over, desempate)
-- `style.css` — estilos responsivos e layout
-- `game.js` — motor do jogo (estados/telas, timer, pontuação, streak, power-ups, teclado, confetti, bilíngue)
-- `questions.js` — banco de questões + metadados (categoria, dificuldade, PT/EN, alternativas e explicações)
+- `index.html` - interface e telas do jogo (setup, rodada, questão, resultado, game over, desempate)
+- `style.css` - estilos responsivos e layout
+- `game.js` - motor do jogo (estados/telas, timer, pontuação, streak, power-ups, teclado, confetti, bilíngue)
+- `questions.js` - banco de questões + metadados (categoria, dificuldade, PT/EN, alternativas e explicações)
 
 > Dica: para adicionar/editar perguntas, edite o arquivo `questions.js`.
 
