@@ -2,7 +2,7 @@
 
 ## [Jogue Physics Quiz Agora!](https://cometsinthesky.github.io/physics-quiz-game/)
 
-Um **quiz interativo** para sala de aula, no formato **batalha de equipes**, ideal para revisar e consolidar conteúdos de **Física** com dinâmica, colaboração e feedback imediato. Indicado para **Middle Years / Year 6–9** (adaptável para Year 10–12, conforme seleção de dificuldade e categorias).
+Um **quiz interativo** para sala de aula, no formato **batalha de equipes**, ideal para revisar e consolidar conteúdos de **Física** com dinâmica, colaboração e feedback imediato. Indicado para **Ensino Médio** (adaptável para Anos Finais do Ensino Fundamental, conforme seleção de dificuldade e categorias).
 
 Este projeto é ideal para professores que querem uma forma rápida e envolvente de reforçar:
 - **Cinemática e Mecânica** (MRU/MRUV, Leis de Newton, atrito, gravidade)
