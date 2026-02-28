@@ -113,7 +113,7 @@ Funciona bem com habilidades e objetivos ligados a:
 
 ## ✉️ Contato
 
-Criado por **Lucas Ferreira (UnB/IF/PPGEduC)**.  
+Criado por **Lucas Ferreira (UnB/IF/PPGEduC)** e **Elias Queiroga (Dev Senior)**.  
 Se você usar em sala, feedback e sugestões são muito bem-vindos!
 
 **Email:** [lucasferreiraunb@gmail.com](mailto:lucasferreiraunb@gmail.com)
