@@ -148,16 +148,7 @@ html, body {
 }
 
 .setup-container::-webkit-scrollbar {
-  width: 6px;
-}
-
-.setup-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.setup-container::-webkit-scrollbar-thumb {
-  background: #ffffff20;
-  border-radius: 3px;
+  display: none;
 }
 
 .game-title {
